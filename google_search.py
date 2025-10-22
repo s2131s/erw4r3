@@ -30,6 +30,7 @@ def google_search(search_term="selam"):
     # Tarayıcıyı görünür yapmak için aşağıdaki satırı kaldır
     # chrome_options.add_argument("--headless")
 
+    driver = None
     try:
         # WebDriver'ı başlat
         driver = webdriver.Chrome(options=chrome_options)
@@ -76,8 +77,9 @@ def google_search(search_term="selam"):
 
     finally:
         # Tarayıcıyı kapat
-        print("Tarayıcı kapatılıyor...")
-        driver.quit()
+        if driver:
+            print("Tarayıcı kapatılıyor...")
+            driver.quit()
         print("İşlem tamamlandı!")
 
 
